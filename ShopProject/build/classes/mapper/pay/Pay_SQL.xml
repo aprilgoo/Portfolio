@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="pay">     
+    <select id="openCartList" parameterType="hashmap" resultType="hashmap">         
+     <![CDATA[
+           SELECT           		
+           		CART_NO,           		
+           		PRO_NAME,
+           		NUMBERS,       
+           		PRICE  		
+           FROM
+                CART 
+           WHERE VALIDITY = 'Y' && USER_ID = #{user_id} && PAYMENT = 'Y'
+                  ]]>                   		
+    </select> 
+    
+    <insert id="insertCardInfo" parameterType="hashmap" useGeneratedKeys="true" keyProperty="no">
+	<![CDATA[
+	
+		INSERT INTO CARD (		
+				
+			
+				CARDNUMA,
+				CARDNUMB,
+				CARDNUMC,
+				CARDNUMD,
+				CARDPWD,
+				CARDMM,
+				CARDYY			
+					
+		)
+		VALUES (
+			
+		
+			#{cardnuma},
+			#{cardnumb},			
+			#{cardnumc},
+			#{cardnumd},			
+			#{cardpwd},
+			#{cardmm},
+			#{cardyy}
+
+	
+		)
+	
+	
+	]]>
+     
+	</insert> 
+	
+	<update id="movePay" parameterType="hashmap">
+		<![CDATA[
+			
+			UPDATE CART
+				SET
+			PAYMENT = 'Y'
+				WHERE VALIDITY = 'Y' && PAYMENT != 'D' && PAYMENT != 'C'
+	
+		]]>	
+	</update>	
+	
+	<update id="completePay" parameterType="hashmap">
+		<![CDATA[
+			
+			UPDATE CART
+				SET
+			PAYMENT = 'C'
+				WHERE PAYMENT = 'Y' && USER_ID = #{user_id}
+	
+		]]>	
+	</update>
+	
+	    <select id="allPrice" parameterType="hashmap" resultType="hashmap">         
+     <![CDATA[
+           SELECT           		
+           		SUM(PRICE) AS SUM        		
+           FROM
+                CART 
+           WHERE VALIDITY = 'Y' && USER_ID = #{user_id} && PAYMENT = 'Y'
+                  ]]>                   		
+    </select> 
+    
+     <update id="deletePay" parameterType="hashmap">
+     	<![CDATA[
+     		UPDATE CART 
+     			SET 
+     				PAYMENT = 'D'
+     			WHERE
+     				CART_NO = #{CART_NO}   	
+     	]]>     
+     </update>    
+	      
+    </mapper>
+    
+    
+    
+    
+    
+    
+    
