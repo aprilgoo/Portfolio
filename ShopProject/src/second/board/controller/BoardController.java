@@ -15,17 +15,27 @@ import second.board.service.BoardService;
 import second.common.common.CommandMap;
 
 
+/**
+ * 
+ * ±‚∫ª¿˚¿Œ crud ±∏«ˆ 
+ * 
+ * openSellList¥¬ ∞Àªˆ 
+ * 
+ *
+ */
+
+
+
 @Controller
 public class BoardController {	
 		
 	@Resource(name="boardService")
-    private BoardService boardService;
-	// Service ÏòÅÏó≠Ïùò Ï†ëÍ∑ºÏùÑ ÏúÑÌïú ÏÑ†Ïñ∏
-	// ÌïÑÏöîÌïú beanÏùÑ ÏàòÎèôÏúºÎ°ú Îì±Î°ù(sampleService)	
-
-     
+    private BoardService boardService;	
+	
+    
+	//∞‘Ω√∆« ∏Ò∑œ
     @RequestMapping(value="/board/openSellList.do")
-    public ModelAndView openSellList(@RequestParam(defaultValue="") String opt,@RequestParam(defaultValue=" ") String keyword ,Map<String,Object>commandMap) throws Exception{
+    public ModelAndView openSellList(@RequestParam(defaultValue="") String opt,@RequestParam(defaultValue="")String keyword, Map<String,Object>commandMap) throws Exception{
         ModelAndView mv = new ModelAndView("board/sell_list");
                   
         List<Map<String, String>> list = boardService.searchBoard(opt, keyword);    
@@ -40,12 +50,15 @@ public class BoardController {
         
     }
     
+    //±€æ≤±‚ »≠∏È ø≠±‚
     @RequestMapping(value="/board/openSellWrite.do", method=RequestMethod.POST)
     public ModelAndView openSellWrite(CommandMap commandMap) throws Exception{
         ModelAndView mv = new ModelAndView("board/sell_write");         
         return mv;
     }
     
+    
+    //DBø° ±€ ≥ªøÎ ≥÷±‚
     @RequestMapping(value="/board/insertBoard.do")
 	public ModelAndView insertBoard(CommandMap commandMap) throws Exception {
 	
@@ -56,6 +69,8 @@ public class BoardController {
 	return mv;    	
 }    
     
+    
+    // ªÛºº »≠∏È ∫∏±‚
     @RequestMapping(value="/board/openSellDetail.do")
     public ModelAndView openSellDetail(CommandMap commandMap) throws Exception {
     	ModelAndView mv = new ModelAndView("board/sell_detail");
@@ -67,6 +82,7 @@ public class BoardController {
     	  	
     }
     
+    // ±€ ≥ªøÎ ºˆ¡§ »≠∏È ø≠±‚
     @RequestMapping(value="/board/openSellModify.do")    
     public ModelAndView openBoardUpdate(CommandMap commandMap) throws Exception {
     	ModelAndView mv = new ModelAndView("board/sell_modify");
@@ -77,6 +93,7 @@ public class BoardController {
     	return mv;    	
     }
     
+    //DBø° ºˆ¡§«— ≥ªøÎ ≥÷±‚
     @RequestMapping(value="/board/updateBoard.do")    
     public ModelAndView updateBoard(CommandMap commandMap) throws Exception {
     	ModelAndView mv = new ModelAndView("redirect:/board/openSellDetail.do");
@@ -87,7 +104,7 @@ public class BoardController {
     	return mv;
     }
     
-    
+    //∞‘Ω√π∞ ªË¡¶
     @RequestMapping(value="/board/deleteBoard.do")
     
     public ModelAndView deleteBoard(CommandMap commandMap) throws Exception {
@@ -98,6 +115,7 @@ public class BoardController {
     }      
 	
 	
+    //¿ÂπŸ±∏¥œø° ¥„±‚
 	@RequestMapping(value="/board/insertCart.do")
 	public ModelAndView insertCart(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("redirect:/cart/openCartList.do");	

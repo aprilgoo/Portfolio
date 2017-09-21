@@ -21,6 +21,8 @@ public class CartController {
 	@Resource(name="cartService")
 	private CartService cartService;
 	
+	//장바구니 목록 열기
+	//게시판 목록과 같은 형태
 	@RequestMapping(value="/cart/openCartList.do")
 	public ModelAndView openCartList(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("cart/cart_list");
@@ -32,6 +34,8 @@ public class CartController {
 		return mv;
 	}
 	
+	
+	//장바구니 목록에서 삭제
 	@RequestMapping(value="/cart/deleteCart.do")
 	public ModelAndView deleteCart(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("redirect:openCartList.do");				

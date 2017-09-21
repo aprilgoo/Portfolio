@@ -5,6 +5,12 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+/**
+ * map의 기능들 중 유용한 것을 모은 클래스
+ *
+ */
+
+
 public class CommandMap {
 		Map<String,Object> map = new HashMap<String,Object>();
 		

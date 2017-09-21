@@ -1,10 +1,20 @@
 package second.common.login;
 
 import javax.servlet.http.HttpServletRequest;
+
+
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+/**
+ * 
+ *·Î±×ÀÎ ÀÎÅÍ¼ÁÅÍ  
+ *action-servlet¿¡ ¸ÅÇÎµÈ ÆäÀÌÁö¿¡¼­ ·Î±×ÀÎ ¿©ºÎ¸¦ ÆÇ´Ü 
+ *
+ */
+
 
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 	
@@ -14,7 +24,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		
 		try {
-			//user or adminì´ë¼ëŠ” ì„¸ì…˜keyë¥¼ ê°€ì§„ ì •ë³´ê°€ nullì¼ ê²½ìš° ë¡œê·¸ì¸ í˜ì´ì§€ë¡œ ì´ë™
+			//user¼¼¼ÇÀÌ ¾øÀ» °æ¿ì ¸ŞÀÎ ÆäÀÌÁö·Î ¸®´ÙÀÌ·ºÆ®µÊ
 			if(request.getSession().getAttribute("user") == null) {			
 				response.sendRedirect("/");
 				return false;				

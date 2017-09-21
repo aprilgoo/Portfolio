@@ -7,16 +7,23 @@ import org.apache.commons.logging.LogFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
+
+/**
+ * 
+ * MyBatis ¿¬°áÇÏ¸é¼­ ¼±¾ğÇÑ SqlSessionTemplate¸¦ »ç¿ëÇÒ DAO
+ * (SqlSessionÀ» ´ëÃ¼ÇÔ)
+ * Autowired ¾î³ëÅ×ÀÌ¼ÇÀ» ÅëÇÏ¿© xml¿¡ ¼±¾ğÇß´ø ÀÇÁ¸°ü°è¸¦ ÀÚµ¿À¸·Î ÁÖÀÔÇÔ
+ * 
+ *  
+ */
+
+
 public class AbstractDAO {
     protected Log log = LogFactory.getLog(AbstractDAO.class);
      
     @Autowired
     private SqlSessionTemplate sqlSession;
-    // SqlSessionTemplageë¥¼ ì„ ì–¸í•˜ê³  autowired ì–´ë…¸í…Œì´ì…˜ì„ í†µí•´ì„œ xmlì— ì„ ì–¸í–ˆë˜
-    // ì˜ì¡´ê´€ê³„ë¥¼ ìë™ìœ¼ë¡œ ì£¼ì…í•˜ë„ë¡ í•¨
-    // ì¿¼ë¦¬ëŠ” sqlSession ë©”ì„œë“œë¥¼ í˜¸ì¶œí•˜ë©´ ë˜ëŠ”ë°, ë¡œê·¸ë¥¼ ë‚¨ê¸°ê¸° ìœ„í•´ì„œ
-    // AbstractDAOë¥¼ ë§Œë“¤ì–´ì„œ insert, delete, update, select ë©”ì„œë“œë¥¼ ì¬ì •ì˜í•¨
-    // ë¹„ì¦ˆë‹ˆìŠ¤ ë¡œì§ì„ ë‹´ë‹¹í•  DAOë¥¼ ìƒì„±í•˜ì—¬ AbstractDAOë¥¼ ìƒì†ë°›ë„ë¡ í•¨
+
      
     protected void printQueryId(String queryId) {
         if(log.isDebugEnabled()){

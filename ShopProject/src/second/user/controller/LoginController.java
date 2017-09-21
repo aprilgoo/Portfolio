@@ -6,12 +6,19 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import second.common.common.CommandMap;
 import second.user.service.LoginService;
+
+/**
+ * 
+ * 로그인 및 로그아웃 
+ * 아이디, 패스워드 입력값과 db에 저장된 값의 일치 여부 판단
+ * 일치할 시 map에 아이디와 패스워드, 회원 번호를 저장하고, 그 map을 user 세션에 담음
+ * 
+ */
 
 @Controller
 public class LoginController
@@ -37,6 +44,7 @@ public class LoginController
     Map<String, Object> map = new HashMap();
     map = this.loginService.openLoginSession(commandMap.getMap());
     map.get("no");
+    
     if (session.getAttribute("user") != null) {
       session.removeAttribute("user");
     }
@@ -65,6 +73,7 @@ public class LoginController
     return returnURL;
   }
   
+  //회원 정보 수정 기능
   @RequestMapping({"/user/updateUser.do"})
   public String updateUser(HttpSession session, HttpServletResponse response, HttpServletRequest request, CommandMap commandMap)
     throws Exception
@@ -80,6 +89,8 @@ public class LoginController
     return returnURL;
   }
   
+  
+  //user page로 리다이렉트
   @RequestMapping({"/user/userPage.do"})
   public String userPage(HttpServletRequest request, CommandMap commandMap)
     throws Exception
@@ -89,6 +100,7 @@ public class LoginController
     return returnURL;
   }
   
+  //회원 탈퇴 페이지로 리다이렉트
   @RequestMapping({"/user/openDeletePage.do"})
   public ModelAndView openDeletePage(CommandMap commandMap)
     throws Exception
@@ -97,6 +109,9 @@ public class LoginController
     return mv;
   }
   
+  //회원 탈퇴
+  //회원 정보 삭제가 아닌 DEL_GB 속성을 수정하여 db에 남게 함
+  //세션 정보 지움
   @RequestMapping({"/user/deleteUser.do"})
   public ModelAndView deleteUser(HttpSession session, CommandMap commandMap)
     throws Exception

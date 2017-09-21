@@ -10,8 +10,19 @@ import org.springframework.web.servlet.ModelAndView;
 import second.common.common.CommandMap;
 import second.pay.service.PayService;
 
+/**
+ * 
+ * 결제 정보 입력
+ * 장바구니 페이지에서 '결제하기'를 누르면
+ * 세션에 저장된 아이디 정보와 db에 저장된 아이디 정보와 일치할 시 cart 테이블에서
+ * 해당 아이디를 가진 유저가 저장한 목록 중 payment 속성이 'y'인 목록을 가져옴
+ *
+ */
+
+
 @Controller
 public class PayController
+
 {
   @Resource(name="payService")
   private PayService payService;
