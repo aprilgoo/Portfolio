@@ -1,9 +1,6 @@
 package second.join.dao;
 
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-
 import org.springframework.stereotype.Repository;
 
 import second.common.dao.AbstractDAO;

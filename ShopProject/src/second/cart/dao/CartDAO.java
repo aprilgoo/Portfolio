@@ -11,12 +11,13 @@ import second.common.dao.AbstractDAO;
 
 @Repository("cartDAO")
 public class CartDAO extends AbstractDAO {
-
-	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>>openCartList(CommandMap commandMap) {
-		Map<String,Object>map = new HashMap<String,Object>();
-		return (List<Map<String,Object>>)selectList("cart.openCartList", map);
-	}
+	
+	  @SuppressWarnings("unchecked")
+	public List<Map<String, Object>> openCartList(String id)
+	    throws Exception
+	  {
+	    return selectList("cart.openCartList", id);
+	  }
 	
 	public void deleteCart(Map<String, Object> map) {
 		update("cart.deleteCart", map);

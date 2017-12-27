@@ -5,9 +5,9 @@
 <!-- dataSourceSpied(log4j-remix가 쿼리를 정렬해줌 -->
 <bean destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource" id="dataSourceSpied">
 <property value="org.mariadb.jdbc.Driver" name="driverClassName"/>
-<property value="jdbc:mariadb://localhost:3306/beammeupplz?useUnicode=true&amp;characterEncoding=utf8" name="url"/>
-<property value="beammeupplz" name="username"/>
-<property value="zmffpdlss2s2" name="password"/>
+<property value="jdbc:mariadb://localhost:3306/mshop?useUnicode=true&amp;characterEncoding=utf8" name="url"/>
+<property value="root" name="username"/>
+<property value="1234" name="password"/>
 </bean>
 
 

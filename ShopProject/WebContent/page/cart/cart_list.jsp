@@ -36,22 +36,16 @@
     </thead>    
     <tbody>   	  
     <c:choose>
-    		<c:when test="${fn:length(map.list) >0}">
-    		<c:forEach var="row" items="${map.list}">    	
-	    		<tr>
-					<td scope="row">${row.CART_NO}							
-					<input type="hidden"  id="CART_NO" name="CART_NO" value=" ${row.CART_NO}"></input></td>						
-					<input type="hidden" name="user_id" value=<%=user_id%>></input>    
-					     
-					<td scope="row">${row.PRO_NAME }</td>	
-					<input type="hidden" name="PRO_NAME" value="${row.PRO_NAME}"></input> 	
-										
-					<td scope="row">${row.NUMBERS}					
-					<input type="hidden" name="NUMBERS" value="${row.NUMBERS}" /></td>				
-					
-					<td scope="row">${row.PRICE }</td>
-					<input type="hidden" name="PRICE" value="${row.PRICE}">
-					<td scope="row"><a href="#this" id="delete">삭제</a></td>				
+    		<c:when test="${fn:length(list) >0}">
+ 		<c:forEach var="row" items="${list}">    	
+	    		<tr>	    			
+					<td scope="row">${row.CART_NO}		
+					<input type="hidden"  id="CART_NO" name="CART_NO" value=" ${row.CART_NO}"></input></td>			
+					<td scope="row">${row.PRO_NAME }</td>						
+					<td scope="row">${row.NUMBERS }</td>			
+					<td scope="row">${row.PRICE }
+					<td scope="row"><a href="#this" id="delete">삭제</a>
+					<input type="hidden" name="user_id" value=<%=user_id%>></input></td>		
 				</tr>						 		
 			</c:forEach>
 			</c:when>

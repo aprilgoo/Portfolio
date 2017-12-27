@@ -6,6 +6,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,7 +25,9 @@ import second.user.service.LoginService;
 @Controller
 public class LoginController
 {
- 
+	
+  Logger log = Logger.getLogger(this.getClass());
+    
 	
   @Resource(name="loginService")
   private LoginService loginService;
@@ -36,18 +40,18 @@ public class LoginController
     return mv;
   }
   
-  @RequestMapping({"/user/openLoginSession.do"})
+  @RequestMapping("/user/openLoginSession.do")
   public String openLoginSession(HttpSession session, HttpServletResponse response, HttpServletRequest request, CommandMap commandMap)
     throws Exception
   {
     String returnURL = "";
-    Map<String, Object> map = new HashMap();
-    map = this.loginService.openLoginSession(commandMap.getMap());
-    map.get("no");
-    
+    Map<String, Object> map = new HashMap<String, Object>();
+    map = loginService.openLoginSession(commandMap.getMap());
+        
     if (session.getAttribute("user") != null) {
       session.removeAttribute("user");
     }
+    
     if ((request.getParameter("user_id").equals((String)map.get("user_id"))) && (request.getParameter("user_password").equals((String)map.get("user_password"))))
     {
       
@@ -63,7 +67,7 @@ public class LoginController
     return returnURL;
   }
   
-  @RequestMapping({"/user/openUserUpdate.do"})
+  @RequestMapping("/user/openUserUpdate.do")
   public String openUserUpdate(CommandMap commandMap)
     throws Exception
   {
@@ -74,13 +78,13 @@ public class LoginController
   }
   
   //회원 정보 수정 기능
-  @RequestMapping({"/user/updateUser.do"})
+  @RequestMapping("/user/updateUser.do")
   public String updateUser(HttpSession session, HttpServletResponse response, HttpServletRequest request, CommandMap commandMap)
     throws Exception
   {
     String returnURL = "";
     
-    Map<String, Object> map = new HashMap();
+    Map<String, Object> map = new HashMap<String, Object>();
     map = this.loginService.updateUser(commandMap.getMap());
     
     request.getSession().setAttribute("user", map);
@@ -91,7 +95,7 @@ public class LoginController
   
   
   //user page로 리다이렉트
-  @RequestMapping({"/user/userPage.do"})
+  @RequestMapping("/user/userPage.do")
   public String userPage(HttpServletRequest request, CommandMap commandMap)
     throws Exception
   {
@@ -101,7 +105,7 @@ public class LoginController
   }
   
   //회원 탈퇴 페이지로 리다이렉트
-  @RequestMapping({"/user/openDeletePage.do"})
+  @RequestMapping("/user/openDeletePage.do")
   public ModelAndView openDeletePage(CommandMap commandMap)
     throws Exception
   {
@@ -112,7 +116,7 @@ public class LoginController
   //회원 탈퇴
   //회원 정보 삭제가 아닌 DEL_GB 속성을 수정하여 db에 남게 함
   //세션 정보 지움
-  @RequestMapping({"/user/deleteUser.do"})
+  @RequestMapping("/user/deleteUser.do")
   public ModelAndView deleteUser(HttpSession session, CommandMap commandMap)
     throws Exception
   {

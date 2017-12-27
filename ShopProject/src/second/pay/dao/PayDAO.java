@@ -9,7 +9,8 @@ import second.common.dao.AbstractDAO;
 public class PayDAO
   extends AbstractDAO
 {
-  public List<Map<String, Object>> openCartList(String id)
+  @SuppressWarnings("unchecked")
+public List<Map<String, Object>> openCartList(String id)
     throws Exception
   {
     return selectList("pay.openCartList", id);

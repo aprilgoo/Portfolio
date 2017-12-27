@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -17,20 +18,24 @@ import second.common.common.CommandMap;
 
 @Controller
 public class CartController {	
-		
+	
+	Logger log = Logger.getLogger(this.getClass());
+	
 	@Resource(name="cartService")
 	private CartService cartService;
 	
 	//장바구니 목록 열기
 	//게시판 목록과 같은 형태
 	@RequestMapping(value="/cart/openCartList.do")
-	public ModelAndView openCartList(CommandMap commandMap) throws Exception {
+	public ModelAndView openCartList(HttpSession session, CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("cart/cart_list");
 		
-		Map<String,Object>map = new HashMap<String, Object>();
-		List<Map<String,Object>> list = cartService.openCartList(commandMap);		
-		map.put("list", list);
-		mv.addObject("map", map);
+		String id = (String)session.getAttribute("user_id");		   
+		List<Map<String,Object>> list = cartService.openCartList(id);		
+		mv.addObject("list", list);
+		log.debug(list);
+		log.debug(id);
+		
 		return mv;
 	}
 	

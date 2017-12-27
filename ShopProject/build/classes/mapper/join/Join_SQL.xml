@@ -7,11 +7,10 @@
 	
 		INSERT INTO USERS (		
 					
-			USER_TYPE,
+		
 			USER_ID,			
 			USER_PASSWORD,
-			USER_NAME,		
-			GENDER,
+			USER_NAME,				
 			EMAIL,
 			PHONE,
 			ADDRESS,	
@@ -19,11 +18,10 @@
 		)
 		VALUES (
 			
-			#{user_type},
+			
 			#{user_id},			
 			#{user_password},
-			#{user_name},			
-			#{gender},
+			#{user_name},				
 			#{email},
 			#{phone},
 			#{address},

@@ -17,8 +17,8 @@ public class CartServiceImpl implements CartService {
 	private CartDAO cartDAO;
 
 	@Override
-	public List<Map<String, Object>> openCartList(CommandMap commandMap) throws Exception {
-		return cartDAO.openCartList(commandMap);
+	public List<Map<String, Object>> openCartList(String id) throws Exception {
+		return cartDAO.openCartList(id);
 	}
 
 	@Override
