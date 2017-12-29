@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import second.cart.Service.CartService;
@@ -30,12 +29,11 @@ public class CartController {
 	public ModelAndView openCartList(HttpSession session, CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("cart/cart_list");
 		
+		//장바구니 리스트 열기
 		String id = (String)session.getAttribute("user_id");		   
-		List<Map<String,Object>> list = cartService.openCartList(id);		
-		mv.addObject("list", list);
-		log.debug(list);
-		log.debug(id);
+		List<Map<String,Object>> list = cartService.openCartList(id);	
 		
+		mv.addObject("list", list);
 		return mv;
 	}
 	

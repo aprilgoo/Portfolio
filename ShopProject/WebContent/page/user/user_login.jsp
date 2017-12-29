@@ -31,7 +31,7 @@
 	    <input type="text" id="user_id" name="user_id" placeholder="Username" required="" />
 	    <input type="password" id="user_password" name="user_password" placeholder="Password" required="" /> 
 	    <input type="hidden" id="no" name="no" value="${map.NO}" />
-	    <input type="submit" class="btn form-control" />	
+	    <input type="submit" class="btn form-control" value="sign in" />	
 	</form>
 </div>
 

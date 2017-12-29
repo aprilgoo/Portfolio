@@ -25,6 +25,5 @@ public class CartServiceImpl implements CartService {
 	public void deleteCart(Map<String, Object> map) throws Exception {
 		cartDAO.deleteCart(map);		
 	}
-	
 
 }

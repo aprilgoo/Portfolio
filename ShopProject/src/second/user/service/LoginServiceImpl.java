@@ -37,4 +37,9 @@ public class LoginServiceImpl
   {
     this.loginDAO.deleteUser(map);
   }
+
+@Override
+public Map<String, Object> selectUser(Map<String, Object> map) throws Exception {
+	return loginDAO.selectUser(map);
+}
 }

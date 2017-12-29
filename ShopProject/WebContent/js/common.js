@@ -32,3 +32,10 @@ function ComSubmit(opt_formId) {
         frm.submit();  
     };
 }
+
+
+function SQL_Injection_Prevention($get_str) {
+	return eregi_replace(
+			"(select | union | insert | update | delete | drop | \" | \' | # | \/\* | \*\/ | \\\ | \; )" , "" , $get_Str);
+	}
+

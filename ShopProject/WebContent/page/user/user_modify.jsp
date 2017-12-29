@@ -27,7 +27,8 @@
 <form id="frm" action="/user/updateUser.do" method="POST">
 <h2>회원 정보 수정 </h2>
 		<table class="modify_list">
-				<input type="text" name="user_id" placeholder="Userid" value="${map.user_id}"></input>
+				<c:out value="${map.USER_ID}" />
+				<input type="hidden" name="user_id" value="${map.user_id}"></input>
 				<input type="password" name="user_password" placeholder="Password" ${map.user_password}></input>				
 				<input type="text" name="user_name" placeholder="Username" value="${map.user_name}" ></input>			
 				<input type="text" name="email" placeholder="Email" value="${map.email}" ></input>

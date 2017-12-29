@@ -20,8 +20,7 @@ public class CartDAO extends AbstractDAO {
 	  }
 	
 	public void deleteCart(Map<String, Object> map) {
-		update("cart.deleteCart", map);
-		
+		update("cart.deleteCart", map);		
 		
 	}
 

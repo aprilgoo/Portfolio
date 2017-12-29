@@ -23,7 +23,7 @@
                 <th scope="row">상품 번호</th>
                 <td>${map.PRO_NO}</td> 
                  <input type="hidden" name="PRO_NO"  value="${map.PRO_NO}"></input> 
-                  <input type="hidden" id="user_id" name="user_id" value=<%=user_id%>></input>                                  
+                                                   
                 <th scope="row">상품 종류</th>
                 <td>${map.PRO_TYPE}</td>
             </tr>
@@ -111,7 +111,7 @@
         }
         
 		function fn_insertCart() {
-			var comSubmit = new ComSubmit("frm");
+			var comSubmit = new ComSubmit();
 			comSubmit.setUrl("<c:url value='/board/insertCart.do' />");						
 			comSubmit.submit();
 		}

@@ -54,6 +54,7 @@
 					INSERT INTO PRODUCT
 					(
 					
+					PRO_NO,
 					PRO_TYPE,
 					PRO_NAME,
 					PRO_DETAIL,
@@ -65,7 +66,7 @@
 					)
 					VALUES
 					(
-						
+						#{PRO_NO},
 						#{PRO_TYPE},
 						#{PRO_NAME},
 						#{PRO_DETAIL},
@@ -77,7 +78,8 @@
 			
 	<insert id="insertCart" parameterType="hashmap" >
      	<![CDATA[
-     		INSERT INTO CART (  
+     		INSERT INTO CART (
+ 
      			USER_ID,
      			PRO_NO,		
      			PRO_NAME,
@@ -85,7 +87,8 @@
      			PRICE     			
      			   )  			
      		VALUE (     
-     			#{user_id},			
+     			
+     			#{user_id},
      			#{PRO_NO},     			
      			#{PRO_NAME},
      			#{NUMBERS},

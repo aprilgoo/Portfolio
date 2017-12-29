@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,6 +31,8 @@ import second.common.common.CommandMap;
 
 @Controller
 public class BoardController {	
+	
+	Logger log = Logger.getLogger(this.getClass());
 		
 	@Resource(name="boardService")
     private BoardService boardService;	
@@ -36,7 +41,7 @@ public class BoardController {
 	//게시판 목록
     @RequestMapping(value="/board/openSellList.do")
     public ModelAndView openSellList(@RequestParam(defaultValue="") String opt,@RequestParam(defaultValue="")String keyword, Map<String,Object>commandMap) throws Exception{
-        ModelAndView mv = new ModelAndView("board/sell_list");
+        ModelAndView mv = new ModelAndView("main");
                   
         List<Map<String, String>> list = boardService.searchBoard(opt, keyword);    
        
@@ -45,7 +50,7 @@ public class BoardController {
     	map.put("opt", opt);
     	map.put("keyword", keyword);
     	mv.addObject("map", map); 
-    	mv.setViewName("board/sell_list");
+    	mv.setViewName("main");
         return mv;
         
     }
@@ -73,11 +78,10 @@ public class BoardController {
     // 상세 화면 보기
     @RequestMapping(value="/board/openSellDetail.do")
     public ModelAndView openSellDetail(CommandMap commandMap) throws Exception {
-    	ModelAndView mv = new ModelAndView("board/sell_detail");
+    	ModelAndView mv = new ModelAndView("page/single");
     	
     	Map<String,Object> map = boardService.selectBoardDetail(commandMap.getMap());    	
-    	mv.addObject("map", map);    	
-    	
+    	mv.addObject("map", map);      	
 		return mv;
     	  	
     }
@@ -119,8 +123,8 @@ public class BoardController {
 	@RequestMapping(value="/board/insertCart.do")
 	public ModelAndView insertCart(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("redirect:/cart/openCartList.do");	
-
 		boardService.insertCart(commandMap.getMap());	
+		log.debug(commandMap.get("USER_ID"));
 		return mv;		
 	}
     

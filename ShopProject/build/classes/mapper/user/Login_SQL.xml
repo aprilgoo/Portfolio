@@ -21,6 +21,15 @@
 	]]>
 </select>    
 
+<select id="selectUser" parameterType="hashmap"  resultType="hashmap">
+	<![CDATA[
+		SELECT 
+			*			
+		FROM USERS	
+		WHERE NO = #{no}
+	]]>
+</select> 
+
 
 <update id="updateUser" parameterType="hashmap">
 	<![CDATA[

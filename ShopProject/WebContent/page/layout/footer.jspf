@@ -120,8 +120,8 @@ $(document).ready(function(){
 				total += items[i].get('quantity');
 			}
 
-			if (total < 3) {
-				alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+			if (total < 1) {
+				alert('장바구니에 1개 이상의 상품이 담겨야 합니다.');
 				evt.preventDefault();
 			}
 		});

@@ -18,6 +18,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- font-awesome icons -->
 <link href="/css/font-awesome.css" rel="stylesheet" type="text/css" media="all" /> 
 <!-- //font-awesome icons -->
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="/js/move-top.js"></script>
+<script type="text/javascript" src="/js/easing.js"></script>
 
 <!-- js -->
 <script src="/js/jquery-1.11.1.min.js"></script>
@@ -72,7 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="w3ls_vegetables">
 							<ul class="dropdown-menu drp-mnu">
 								<li><a href="/page/user/user_logout.jsp">LogOut</a></li> 
-								<li><a href="/page/user/user_page.jsp">MyPage</a></li>
+								<li><a href="/user/openUserUpdate.do">MyPage</a></li>					
 							</ul>
 						</div>                  
 					</div>	

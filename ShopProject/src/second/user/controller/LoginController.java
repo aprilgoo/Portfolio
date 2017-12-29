@@ -68,13 +68,12 @@ public class LoginController
   }
   
   @RequestMapping("/user/openUserUpdate.do")
-  public String openUserUpdate(CommandMap commandMap)
-    throws Exception
+  public ModelAndView openUserUpdate(CommandMap commandMap) throws Exception
   {
-    String returnURL = "";
-    
-    returnURL = "redirect:/page/user/user_modify.jsp";
-    return returnURL;
+	ModelAndView mv = new ModelAndView("user/user_modify");      
+    Map<String, Object> map = loginService.selectUser(commandMap.getMap());
+    mv.addObject("map", map);    
+    return mv;
   }
   
   //회원 정보 수정 기능
@@ -84,8 +83,7 @@ public class LoginController
   {
     String returnURL = "";
     
-    Map<String, Object> map = new HashMap<String, Object>();
-    map = this.loginService.updateUser(commandMap.getMap());
+    Map<String, Object> map = this.loginService.updateUser(commandMap.getMap());
     
     request.getSession().setAttribute("user", map);
     

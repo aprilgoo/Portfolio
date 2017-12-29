@@ -1896,14 +1896,25 @@ module.exports = Cart;
 
 var mixin = require('./util/mixin');
 
+var param = {
+		
+		 PRO_NO: $('#PRO_NO').val(),
+		 USER_ID: $('#USER_ID').val(),
+		 PRO_NAME: $('#PRO_NAME').val(),
+		 NUMBERS: $('#NUMBERS').val(),
+		 PRICE: $('#PRICE').val() 
+		
+};
 
 var defaults = module.exports = {
 
     name: 'PPMiniCart',
-
+    
     parent: (typeof document !== 'undefined') ? document.body : null,
 
-    action: 'checkout.html',
+    data: param,
+    		
+    action: '/board/insertCart.do',
 
     target: '',
 
@@ -1917,7 +1928,7 @@ var defaults = module.exports = {
         button: 'Check Out with <img src="//cdnjs.cloudflare.com/ajax/libs/minicart/3.0.1/paypal_65x18.png" width="65" height="18" alt="PayPal" />',
         subtotal: 'Subtotal:',
         discount: 'Discount:',
-        empty: 'Your shopping cart is empty'
+        empty: '담겨진 상품이 없습니다.'
     }
 
 };

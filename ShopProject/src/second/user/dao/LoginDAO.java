@@ -33,4 +33,9 @@ public Map<String, Object> updateUser(Map<String, Object> commandMap)
   {
     update("login.deleteUser", map);
   }
+
+@SuppressWarnings("unchecked")
+public Map<String, Object> selectUser(Map<String, Object> map) throws Exception {
+	return (Map<String, Object>)selectOne("login.selectUser", map);
+}
 }

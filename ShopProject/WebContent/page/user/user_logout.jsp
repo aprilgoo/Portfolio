@@ -8,14 +8,9 @@
 	}
 	else if(session.getAttribute("admin")!=null)  {
 		session.removeAttribute("admin");
+		session.invalidate();
 	}
 
-%>
-<script>
-		alert("성공적으로 로그아웃 되었습니다");
-</script>
-
-<%
 	response.sendRedirect("/index.jsp");
 %>
 
