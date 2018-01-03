@@ -39,7 +39,8 @@ public class LoginServiceImpl
   }
 
 @Override
-public Map<String, Object> selectUser(Map<String, Object> map) throws Exception {
-	return loginDAO.selectUser(map);
+public Map<String, Object> selectUser(Map<String, Object> map, String no) throws Exception {
+	
+	return loginDAO.selectUser(map, no);
 }
 }

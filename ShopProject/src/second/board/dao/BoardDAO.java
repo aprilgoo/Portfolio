@@ -38,7 +38,9 @@ public class BoardDAO extends AbstractDAO {
 		
 	}
 	
-	public void insertCart(Map<String, Object> map) throws Exception {
+	public void insertCart(Map<String, Object> map, String user_id) throws Exception {
+		map.put("user_id", user_id);
+		log.debug(map);
 		insert("board.insertCart", map);
 		
 	}

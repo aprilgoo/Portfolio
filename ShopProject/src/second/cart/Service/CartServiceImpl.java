@@ -26,4 +26,9 @@ public class CartServiceImpl implements CartService {
 		cartDAO.deleteCart(map);		
 	}
 
+	@Override
+	public List<Map<String, Object>> openCouponList(String user_id) throws Exception {
+		return cartDAO.openCouponList(user_id);
+	}
+
 }

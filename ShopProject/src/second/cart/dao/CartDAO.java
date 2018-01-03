@@ -24,4 +24,9 @@ public class CartDAO extends AbstractDAO {
 		
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> openCouponList(String user_id) {
+		return (List<Map<String, Object>>)selectList("cart.openCouponList",user_id);
+	}
+
 }

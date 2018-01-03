@@ -19,5 +19,5 @@ public interface LoginService
   public void deleteUser(Map<String, Object> paramMap)
     throws Exception;
 
-  public Map<String, Object> selectUser(Map<String, Object> map) throws Exception;
+  public Map<String, Object> selectUser(Map<String, Object> map, String user_id) throws Exception;
 }

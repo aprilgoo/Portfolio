@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="coupon">     
+     
+        <select id="selectCouponList" parameterType="hashmap" resultType="hashmap">         
+     <![CDATA[
+           SELECT     
+           		COUPON_NO,      		
+           		COUPON_NAME,
+           		COUPON_TYPE,
+           		COUPON_NUM		
+           FROM
+                COUPON 
+           WHERE VALIDITY = 'Y' && USER_ID = #{user_id}
+                  ]]>                   		
+    </select>      
+     
+     <update id="deleteCoupon" parameterType="hashmap">
+     	<![CDATA[
+     		UPDATE COUOPON 
+     			SET 
+     				VALIDITY = 'N'
+     			WHERE
+     				COUPON_NO = #{COUPON_NO}    	
+     	]]>     
+     </update>       
+    </mapper>

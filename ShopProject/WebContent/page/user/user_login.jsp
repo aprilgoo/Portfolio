@@ -42,7 +42,7 @@
 				<input type="text" name="user_id" placeholder="Userid"></input>
 				<input type="password" name="user_password" placeholder="Password"></input>				
 				<input type="text" name="user_name" placeholder="Username" ></input>			
-				<input type="text" name="email" placeholder="Email" ></input>
+				<input type="email" name="email" placeholder="Email" ></input>
 				<input type="text" name="phone" placeholder="Phone"></input>				
 				<input type="text" name="address" placeholder="Address"></input>						
 	

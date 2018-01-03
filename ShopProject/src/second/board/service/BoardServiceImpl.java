@@ -48,10 +48,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void insertCart(Map<String, Object> map) throws Exception {
-		boardDAO.insertCart(map);		
+	public void insertCart(Map<String, Object> map, String user_id) throws Exception {
+		boardDAO.insertCart(map, user_id);		
 	}
-
-
 
 }

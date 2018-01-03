@@ -50,12 +50,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!-- 검색 -->
 		
 		<div class="w3l_search">
-<form id="frm" method="POST">
+<form id="frm" method="POST" action="/board/openSellList.do">
 <input type="text" size="20" name="keyword" value=" ${map.keyword}" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a product...';}">
 				<input type="submit" value="">
 </form>
 		</div>		
-		<!-- 헤더 -->
+		<!-- 헤더 
 		<div class="product_list_header">  
 			<form action="#" method="post" class="last">
                 <fieldset>
@@ -64,7 +64,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <input type="submit" name="submit" value="View your cart" class="button" />
                 </fieldset>
             </form>
-		</div>
+		</div> -->
 		<% 	if(session.getAttribute("user")!=null) { %>
 		
 			<div class="w3l_header_right">
@@ -75,7 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="w3ls_vegetables">
 							<ul class="dropdown-menu drp-mnu">
 								<li><a href="/page/user/user_logout.jsp">LogOut</a></li> 
-								<li><a href="/user/openUserUpdate.do">MyPage</a></li>					
+								<li><a href="/user/userPage.do">MyPage</a></li>					
 							</ul>
 						</div>                  
 					</div>	
@@ -151,8 +151,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<ul class="special_items">
 					<li><a href="/page/page/events.jsp">Events</a><i>/</i></li>
 					<li><a href="/page/page/about.jsp">About Us</a><i>/</i></li>
-					<li><a href="/cart/openCartList.do">Cart</a><i>/</i></li>
-					<li><a href="/page/page/services.jsp">Services</a></li>
+					<li><a href="/cart/openCartList.do">Cart</a><i>/</i></li>					
+					<li><a href="/qna/openQnaList.do">QnA</a></li>
 				</ul>
 			</div>
 			<div class="w3ls_logo_products_left1">

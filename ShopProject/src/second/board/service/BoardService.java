@@ -17,6 +17,6 @@ public interface BoardService {
 
 	void deleteBoard(Map<String, Object> map) throws Exception;
 
-	void insertCart(Map<String, Object> map) throws Exception;
+	void insertCart(Map<String, Object> map, String user_id) throws Exception;
 
 }

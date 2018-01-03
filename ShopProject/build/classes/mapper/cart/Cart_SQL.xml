@@ -16,6 +16,18 @@
                   ]]>                   		
     </select>    
      
+        <select id="openCouponList" parameterType="hashmap" resultType="hashmap">         
+     <![CDATA[
+           SELECT           		
+           		COUPON_NAME
+           		COUPON_TYPE		
+           FROM
+                COUPON 
+           WHERE VALIDITY = 'Y' && USER_ID = #{user_id}
+                  ]]>                   		
+    </select> 
+     
+     
      <update id="deleteCart" parameterType="hashmap">
      	<![CDATA[
      		UPDATE CART 

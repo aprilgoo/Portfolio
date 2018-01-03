@@ -55,10 +55,8 @@ public class LoginController
     if ((request.getParameter("user_id").equals((String)map.get("user_id"))) && (request.getParameter("user_password").equals((String)map.get("user_password"))))
     {
       
-      request.getSession().setAttribute("user", map);
-      request.getSession().setAttribute("user_id", map.get("user_id"));
-      request.getSession().setAttribute("user_password", map.get("user_password"));
-      request.getSession().setAttribute("no", map.get("no"));
+      session.setAttribute("user", map); 
+      session.setAttribute("user_id", map.get("user_id"));      
       returnURL = "redirect:/page/user/user_page.jsp";
       return returnURL;
     }
@@ -68,10 +66,12 @@ public class LoginController
   }
   
   @RequestMapping("/user/openUserUpdate.do")
-  public ModelAndView openUserUpdate(CommandMap commandMap) throws Exception
+  public ModelAndView openUserUpdate(HttpSession session, CommandMap commandMap) throws Exception
   {
-	ModelAndView mv = new ModelAndView("user/user_modify");      
-    Map<String, Object> map = loginService.selectUser(commandMap.getMap());
+	ModelAndView mv = new ModelAndView("user/user_modify");   
+	String user_id = (String)session.getAttribute("user_id");
+	   
+    Map<String, Object> map = loginService.selectUser(commandMap.getMap(), user_id);
     mv.addObject("map", map);    
     return mv;
   }
@@ -98,7 +98,7 @@ public class LoginController
     throws Exception
   {
     String returnURL = "";
-    returnURL = "redirect:/page/user/user_page2.jsp";
+    returnURL = "redirect:/page/user/user_page.jsp";
     return returnURL;
   }
   

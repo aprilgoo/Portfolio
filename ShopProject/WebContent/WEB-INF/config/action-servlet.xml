@@ -30,10 +30,10 @@
             <mvc:mapping path="/user/deleteUser.do"/>
             <mvc:mapping path="/user/userPage.do"/>
             <mvc:mapping path="/user/updateUser.do"/>
-            <mvc:mapping path="/user/openUserUpdate.do"/>
-            <mvc:mapping path="/cart/openCartList.do"/>
+            <mvc:mapping path="/user/openUserUpdate.do"/>            
             <mvc:mapping path="/pay/openPayment.do"/>
-            <mvc:mapping path="/page/user/user_delete.jsp"/>       
+            <mvc:mapping path="/page/user/user_delete.jsp"/>
+            <mvc:mapping path="/cart/openCartList.do"/>       
             <bean id="loginInterceptor" class="second.common.login.LoginInterceptor"></bean>
         </mvc:interceptor>   
     </mvc:interceptors>

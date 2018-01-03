@@ -22,8 +22,6 @@ import second.common.common.CommandMap;
  * 
  * 기본적인 crud 구현 
  * 
- * openSellList는 검색 
- * 
  *
  */
 
@@ -40,7 +38,7 @@ public class BoardController {
     
 	//게시판 목록
     @RequestMapping(value="/board/openSellList.do")
-    public ModelAndView openSellList(@RequestParam(defaultValue="") String opt,@RequestParam(defaultValue="")String keyword, Map<String,Object>commandMap) throws Exception{
+    public ModelAndView openSellList(@RequestParam(defaultValue="pro_name")String opt,@RequestParam(defaultValue="")String keyword, Map<String,Object>commandMap, HttpSession session) throws Exception{
         ModelAndView mv = new ModelAndView("main");
                   
         List<Map<String, String>> list = boardService.searchBoard(opt, keyword);    
@@ -51,6 +49,24 @@ public class BoardController {
     	map.put("keyword", keyword);
     	mv.addObject("map", map); 
     	mv.setViewName("main");
+    	log.debug(session.getAttribute("user_id"));
+        return mv;
+        
+    }
+    
+    
+    @RequestMapping(value="/board/openProductList.do")
+    public ModelAndView openProductList(@RequestParam(defaultValue="pro_name")String opt,@RequestParam(defaultValue="")String keyword, Map<String,Object>commandMap, HttpSession session) throws Exception{
+        ModelAndView mv = new ModelAndView("page/products");
+                  
+        List<Map<String, String>> list = boardService.searchBoard(opt, keyword);    
+       
+    	Map<String,Object>map = new HashMap<String, Object>();
+    	map.put("list", list);    
+    	map.put("opt", opt);
+    	map.put("keyword", keyword);
+    	mv.addObject("map", map); 
+    	mv.setViewName("page/products");    	
         return mv;
         
     }
@@ -121,10 +137,11 @@ public class BoardController {
 	
     //장바구니에 담기
 	@RequestMapping(value="/board/insertCart.do")
-	public ModelAndView insertCart(CommandMap commandMap) throws Exception {
-		ModelAndView mv = new ModelAndView("redirect:/cart/openCartList.do");	
-		boardService.insertCart(commandMap.getMap());	
-		log.debug(commandMap.get("USER_ID"));
+	public ModelAndView insertCart(HttpSession session, CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("redirect:/cart/openCartList.do");
+		
+		String user_id = (String)session.getAttribute("user_id");
+		boardService.insertCart(commandMap.getMap(), user_id);		
 		return mv;		
 	}
     

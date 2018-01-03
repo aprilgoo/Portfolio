@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="qna">
+	<select id="searchQnaBoard" parameterType="hashmap" resultType="hashmap">    	       
+         
+           SELECT
+           		IDX,
+           		CATE,
+           		TITLE,
+           		USER_ID,
+				DEL_GB
+           FROM
+                QNA 
+               <include refid="search2"></include>    		                     		
+    </select>    
+    <sql id="search2">
+	    <choose>
+	        <!-- 검색옵션이 전체 검색일 경우 -->
+	        <when test="opt2 == 'all'">
+	        	<![CDATA[
+	            WHERE
+	             	DEL_GB = 'N' && TITLE like CONCAT('%', #{keyword2}, '%') OR DEL_GB = 'N' && CONTENTS like CONCAT('%', #{keyword2}, '%') 
+	             	ORDER BY IDX DESC
+	             ]]>        
+	        </when>
+	        <!-- 제목 옵션일 경우 -->
+	        <when test="opt2 =='title'">	        	        
+	          	<![CDATA[  
+	          	WHERE
+	            	DEL_GB = 'N' && TITLE like CONCAT('%', #{keyword2}, '%')
+	            	ORDER BY IDX DESC 	]]>
+	       </when>
+	       <!-- 내용 옵션일 경우 -->
+	       <when test="opt2 =='contents'">	        	        
+	        	<![CDATA[    
+	        	WHERE
+	            	DEL_GB = 'N' && CONTENTS like CONCAT('%', #{keyword2}, '%')
+	            	ORDER BY IDX DESC 	]]>
+	       </when>
+	       <otherwise>
+	       		WHERE 
+	       			DEL_GB = 'N' ORDER BY IDX DESC     
+	       </otherwise>
+	    </choose>
+	</sql>
+
+		<insert id="insertQnaBoard" parameterType="hashmap">
+		<![CDATA[ 
+		
+		INSERT INTO QNA
+		
+					(	
+							
+						CATE,			
+						TITLE,
+						CONTENTS,							
+						CREA_DTM,
+						DEL_GB,
+						USER_ID												
+					
+					)
+					
+				VALUES
+					(	
+						
+						'질문',					
+						#{TITLE},
+						#{CONTENTS},						
+						SYSDATE(),
+						'N',
+						#{user_id}																				
+					)
+		]]>
+	</insert>
+	
+	
+	
+		<select id="selectQnaDetail" parameterType="hashmap" resultType="hashmap">
+		SELECT 
+			IDX,
+			TITLE,
+			CONTENTS,
+			CREA_DTM,
+			USER_ID				
+		FROM 
+			QNA
+		WHERE IDX = #{IDX} AND DEL_GB = 'N'
+									   
+	</select>
+	
+		
+		
+	<update id="updateQnaBoard" parameterType="hashmap">
+	    <![CDATA[
+        UPDATE QNA
+        SET
+            TITLE = #{TITLE},
+            CONTENTS = #{CONTENTS}
+        WHERE
+            IDX = #{IDX}   
+   		 ]]>	
+	</update>	
+		
+	
+	<update id="deleteQna" parameterType="hashmap">
+	    <![CDATA[
+        UPDATE QNA
+        SET
+           DEL_GB = 'Y'
+        WHERE
+            IDX = #{IDX}   
+   		 ]]>	
+	</update>
+	
+
+
+</mapper>     

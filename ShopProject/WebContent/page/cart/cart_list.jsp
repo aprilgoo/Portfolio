@@ -5,17 +5,12 @@
     <head>
         <%@ include file="/page/layout/header.jspf" %>
         <%@ include file="/page/layout/nav.jspf" %>
-        
-    <script>
-    	
-    
-    </script>    
-   </head>
+    </head>
    	<body>
                 <!-- about -->
                 <div class="privacy about">
                     <h3>${sessionScope.user.user_name}<span>님의 장바구니</span></h3>
-                    <div class="checkout-right">
+                  <div class="checkout-right">
                         <!--   <h4>Your shopping cart contains: <span>3 Products</span></h4>  -->
                         <table class="timetable_sub">
                       
@@ -25,7 +20,7 @@
                                     <th>Product</th>
                                     <th>Quality</th>
                                     <th>Product Name</th>
-                                    <th>Price</th>
+                                    <th>Price</th>                                 
                                     <th>Remove</th>
                                 </tr>
                             </thead>
@@ -46,7 +41,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="invert">${row.PRO_NAME}</td>
-                                                <td class="invert">${row.PRICE}원</td>                                      
+                                                <td class="invert">${row.PRICE}원</td>                                                                                  
                                                 <td class="invert">
                                                     <div class="rem">
                                                         <a href="/cart/deleteCart.do?CART_NO=${row.CART_NO}" class="close1"></a>
@@ -64,17 +59,26 @@
                     </div>
                     <div class="checkout-left">
                         <div class="col-md-4 checkout-left-basket">
-                            <h4>Continue to basket</h4>
+                            <h4>Continue to basket</h4>                             
+                          <ul>                                         
+                            <li>
+                            <form action="/coupon/openCouponList.do">
+                            <button type="button" id="coupon" class="btn btn-success form-control" data-toggle="modal" data-target="#couponModal">쿠폰적용</button>
+                            <%@ include file="/page/cart/coupon_list.jsp" %>
+                            </form>
+                            </li>
+                         </ul>                       
                            <c:set var="sum" value="0" />
                            <c:forEach var="price" items="${list}">
-                         		<c:set var="sum" value="${sum+price.PRICE}"  />                            
+                         		<c:set var="sum" value="${(sum+price.PRICE)*price.NUMBERS}"  />                            
                            </c:forEach>    
-                            
-                            <ul> 
+                            <ul>                             
                             	<li>Total Service Charges <i>-</i> <span></span></li> 
                             	<li>Total <i>-</i> <span><c:out value="${sum}"/>원</span></li>                     
                             </ul>
-                        </div>     
+                          
+                        </div>   
+                          
                         <div class="col-md-8 address_form_agile">
                             <h4>Add a new Details</h4>
                             <form action="payment.html" method="post" class="creditly-card-form agileinfo_form">
@@ -128,6 +132,11 @@
                 </div>
                 <div class="clearfix"></div>
                 </div>
+                
+ 
+                
+                
+                
            
                 </body>
                 <%@ include file="/page/layout/footer.jspf" %>

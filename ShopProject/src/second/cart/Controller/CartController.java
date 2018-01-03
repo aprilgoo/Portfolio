@@ -1,6 +1,5 @@
 package second.cart.Controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -30,13 +29,11 @@ public class CartController {
 		ModelAndView mv = new ModelAndView("cart/cart_list");
 		
 		//장바구니 리스트 열기
-		String id = (String)session.getAttribute("user_id");		   
-		List<Map<String,Object>> list = cartService.openCartList(id);	
-		
+		String user_id = (String)session.getAttribute("user_id");		   
+		List<Map<String,Object>> list = cartService.openCartList(user_id);
 		mv.addObject("list", list);
 		return mv;
-	}
-	
+	}	
 	
 	//장바구니 목록에서 삭제
 	@RequestMapping(value="/cart/deleteCart.do")
@@ -46,20 +43,4 @@ public class CartController {
 		return mv;		
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

@@ -12,7 +12,7 @@
 		<div class="container">
 			<ul>
 				<li><i class="fa fa-home" aria-hidden="true"></i><a href="/index.jsp">Home</a><span>|</span></li>
-				<li>회원 정보 수정</li>
+				<li>회원 정보 수정</li>	
 			</ul>
 		</div>
 	</div>
@@ -28,8 +28,8 @@
 <h2>회원 정보 수정 </h2>
 		<table class="modify_list">
 				<c:out value="${map.USER_ID}" />
-				<input type="hidden" name="user_id" value="${map.user_id}"></input>
-				<input type="password" name="user_password" placeholder="Password" ${map.user_password}></input>				
+				<input type="text" name="user_id" value="${map.user_id}" readonly></input>
+				<input type="password" name="user_password" placeholder="Password"></input>				
 				<input type="text" name="user_name" placeholder="Username" value="${map.user_name}" ></input>			
 				<input type="text" name="email" placeholder="Email" value="${map.email}" ></input>
 				<input type="text" name="phone" placeholder="Phone" value="${map.phone}"></input>				
