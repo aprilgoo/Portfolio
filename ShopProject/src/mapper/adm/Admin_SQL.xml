@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adm">    
+
+ <insert id="insertProductBoard" parameterType="hashmap" useGeneratedKeys="true">
+		<![CDATA[
+					INSERT INTO PRODUCT
+					(
+					
+					PRO_NO,
+					PRO_TYPE,
+					PRO_NAME,
+					PRO_DETAIL,
+					PRICE,	
+					DEL_GB						  
+
+					)
+					VALUES
+					(
+						#{PRO_NO},
+						#{PRO_TYPE},
+						#{PRO_NAME},
+						#{PRO_DETAIL},
+						#{PRICE},
+						'N'			
+					)  	
+					]]>
+			</insert>
+			
+</mapper>

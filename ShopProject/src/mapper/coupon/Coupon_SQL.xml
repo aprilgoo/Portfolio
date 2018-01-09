@@ -16,13 +16,13 @@
                   ]]>                   		
     </select>      
      
-     <update id="deleteCoupon" parameterType="hashmap">
+     <update id="updateCoupon" parameterType="hashmap">
      	<![CDATA[
-     		UPDATE COUOPON 
+     		UPDATE COUPON 
      			SET 
      				VALIDITY = 'N'
      			WHERE
-     				COUPON_NO = #{COUPON_NO}    	
+     				COUPON_NO = #{COUPON_NO} && USER_ID = #{user_id}    	
      	]]>     
      </update>       
     </mapper>

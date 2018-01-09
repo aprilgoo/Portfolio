@@ -4,17 +4,13 @@
     <head>  
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-    </head>
-   	<body>                
-         <form method="POST" id="coupon" name="coupon"> 
-                	<div id="couponModal" class="modal fade" role="dialog">
-                		<div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                         	<h3 class="panel-title"></h3>
-                         </div>
-                          <div class="modal-body">
-                            <div class="form-group">
+<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+   </head>
+   	<body>    
+   	<br />
+   	<form id="coupon" name="coupon" method="POST" action="/coupon/updateCoupon.do"> 
+                	<div class="form-group">
                             <table class="timetable_sub">
                               <thead>
                               	<tr>
@@ -35,27 +31,28 @@
                                                 <td class="invert">
                                                     <div class="quantity">
                                                     	<div class="quantity-select">
-                                                    		${row.COUPON_NUM}                                                
+                                                    		${row.COUPON_NAME}                                                
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td class="invert">${row.COUPON_NAME}</td>                                               
+                                                <td class="invert">${row.COUPON_NUM}</td>                                               
                                                 <td class="invert">
-                                                <button type="button" id="coupon" class="btn btn-success" data-toggle="modal" data-target="#couponModal">쿠폰적용</button>
+                                                <button type="submit" id="coupon" class="btn btn-success">쿠폰적용</button>
                                                 </td>                                            
                                             </tr>
                                         </c:forEach>
                                     </c:when>
                                     <c:otherwise>      
-                                    	<tr>사용 가능한 쿠폰이 없습니다.</tr>
+                                    	<tr>
+                                    	<td colspan="5">사용 가능한 쿠폰이 없습니다.</td>
+                                    	</tr>
                                     </c:otherwise>
                                 </c:choose>
                           	  </tbody>                                                  
                             </table>     
-                            </div>
-                          </div>                         
-                        </div>
-                        </div>    	
-                	</div>               
-           </form>      
+                            </div>   
+                         </form>                  
+  
                 </body>
+                
+</html>

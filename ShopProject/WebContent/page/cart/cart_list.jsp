@@ -4,7 +4,16 @@
 
     <head>
         <%@ include file="/page/layout/header.jspf" %>
-        <%@ include file="/page/layout/nav.jspf" %>
+        <%@ include file="/page/layout/nav.jspf" %>  
+        
+    <script type="text/javascript">
+	$(document).ready(function(){
+	  $("#coupon").on("click", function(){
+	    window.open("", "popup_window", "width=500, height=300, scrollbars=no");
+	    $("#couponfrm").submit();
+	  });
+	});
+	</script>    
     </head>
    	<body>
                 <!-- about -->
@@ -62,21 +71,27 @@
                             <h4>Continue to basket</h4>                             
                           <ul>                                         
                             <li>
-                            <form action="/coupon/openCouponList.do">
-                            <button type="button" id="coupon" class="btn btn-success form-control" data-toggle="modal" data-target="#couponModal">쿠폰적용</button>
-                            <%@ include file="/page/cart/coupon_list.jsp" %>
-                            </form>
+                         <form id="couponfrm" action="/coupon/openCouponList.do" target="popup_window">
+                            <button type="button" id="coupon" class="btn btn-success form-control">쿠폰 보기</button>
+                         </form>                    
+                                              
                             </li>
                          </ul>                       
                            <c:set var="sum" value="0" />
                            <c:forEach var="price" items="${list}">
                          		<c:set var="sum" value="${(sum+price.PRICE)*price.NUMBERS}"  />                            
-                           </c:forEach>    
-                            <ul>                             
-                            	<li>Total Service Charges <i>-</i> <span></span></li> 
-                            	<li>Total <i>-</i> <span><c:out value="${sum}"/>원</span></li>                     
+                               
+                          <ul>   
+                            <li>${price.PRO_NAME} <i>-</i> <span><c:out value="${price.PRICE*price.NUMBERS}"/>원</span></li>
+                          </ul>
+                            </c:forEach>
+                            
+                            <ul>
+                            <li>Total Service Charges <i>-</i> <span></span></li> 
+                            <li>Total <i>-</i> <span><c:out value="${sum}"/>원</span></li> 
                             </ul>
                           
+            
                         </div>   
                           
                         <div class="col-md-8 address_form_agile">

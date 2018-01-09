@@ -15,4 +15,10 @@ public class CouponDAO extends AbstractDAO   {
 		return (List<Map<String,Object>>)selectList("coupon.selectCouponList" , user_id);
 	}
 
+	public void updateCoupon(Map<String, Object> map, String user_id) throws Exception {
+		map.put("user_id", user_id);
+		update("coupon.updateCoupon", map);
+		
+	}
+
 }

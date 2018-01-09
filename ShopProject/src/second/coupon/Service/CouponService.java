@@ -7,4 +7,6 @@ public interface CouponService {
 
 	List<Map<String, Object>> selectCouponList(String user_id) throws Exception;
 
+	void updateCoupon(Map<String, Object> map, String user_id) throws Exception;
+
 }

@@ -45,7 +45,7 @@
 					<c:choose>
 				<c:when test="${sessionScope.user_id ne null}">	
 						<div class="snipcart-thumb agileinfo_single_right_snipcart">
-							<h4>$21.00 <span>${map.PRICE}원</span></h4>
+							<h4>${map.PRICE*0.75}원<span>${map.PRICE}원</span></h4>
 						</div>	
 				
 							
@@ -58,15 +58,10 @@
 					</c:when>
 				 	
 					<c:when test="${sessionScope.user_id eq null}">
-						<div class="snipcart-thumb agileinfo_single_right_snipcart">
+					<div class="snipcart-thumb agileinfo_single_right_snipcart">
 							<h4>${map.PRICE}원</h4>
-						</div>	
-						 <select name="NUMBERS" class="btn">
-					<c:forEach begin="1" end="10" var="i">
-						<option name="NUMBERS" value="${i}">${i}</option>
-					</c:forEach>
-					  </select>							  		
-				<button type="submit" class="btn btn-primary">ADD TO CART</button>				
+						<br /><br />												  		
+              		</div>
 					</c:when>
 						</c:choose>
 					</div>

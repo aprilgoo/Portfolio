@@ -1,9 +1,10 @@
 <%@ page pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<%@ include file="/page/layout/header.jspf" %>
-<%@ include file="/page/layout/nav.jspf" %>
+	<head>
+	<%@ include file="/page/layout/header.jspf" %>
+	<%@ include file="/page/layout/nav.jspf" %>
+	</head>
 		<div class="w3l_banner_nav_right">
 			<div class="w3l_banner_nav_right_banner3">
 				<h3>Best Deals For New Products<span class="blink_me"></span></h3>
@@ -56,7 +57,7 @@
 				</div>
 				<div class="clearfix"> </div>
 			</div>
-		<form id="frm">
+	<form id="frm">
 <!-- top-brands -->
 
 	<div class="top-brands">
@@ -121,9 +122,14 @@
 
 <!-- //top-brands -->
 </form>
-					<div class="clearfix"> </div>
-				</div>
+	</div>			
+	
+		<div class="clearfix"> </div>
+				
+			
+			
+
+</body>
 <!-- //banner -->
 <%@ include file="/page/layout/footer.jspf" %>
-</body>
 </html>

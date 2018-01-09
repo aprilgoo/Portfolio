@@ -40,12 +40,14 @@
 <h2>회원 가입 </h2>
 		<table class="join_list">
 				<input type="text" name="user_id" placeholder="Userid"></input>
+				<div class="pwd">
 				<input type="password" name="user_password" placeholder="Password"></input>				
+				<input type="password" name="user_password_2" placeholder="Password Confirm"></input>				
+				</div>
 				<input type="text" name="user_name" placeholder="Username" ></input>			
 				<input type="email" name="email" placeholder="Email" ></input>
 				<input type="text" name="phone" placeholder="Phone"></input>				
 				<input type="text" name="address" placeholder="Address"></input>						
-	
 		</table>	
 		<input type="submit" class="btn form-control" value="sign up" />		
 </form>

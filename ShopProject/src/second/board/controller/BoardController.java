@@ -17,16 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 import second.board.service.BoardService;
 import second.common.common.CommandMap;
 
-
-/**
- * 
- * 기본적인 crud 구현 
- * 
- *
- */
-
-
-
 @Controller
 public class BoardController {	
 	

@@ -17,7 +17,7 @@ public class JoinServiceImpl implements JoinService {
 	private JoinDAO joinDAO;
 
 	@Override
-	public void insertJoinForm(Map<String, Object> map) throws Exception {
+	public void insertJoinForm(Map<String, Object> map, String user_pwd) throws Exception {
 		joinDAO.insertJoinForm(map);	
 	}
 

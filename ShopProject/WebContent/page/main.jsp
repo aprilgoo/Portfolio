@@ -25,7 +25,7 @@
 						</li>
 						<li>
 							<div class="w3l_banner_nav_right_banner2">
-								<h3>upto <i>50%</i> off.</h3>
+								<h3>회원가입 후<i> 첫 주문 25%</i>할인</h3>
 								<div class="more">
 									<a href="/board/openProductList.do" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
 								</div>
@@ -72,7 +72,7 @@
 											<a href="/board/openSellDetail.do?PRO_NO=${row.PRO_NO}"><img title=" " alt=" " src="/images/1.png" /></a>		
 											<p><a href="/board/openSellDetail.do?PRO_NO=${row.PRO_NO}">${row.PRO_NAME}</a></p>
 											 <input type="hidden" id="PRO_NO" name="PRO_NO" value="${row.PRO_NO}" />
-											<h4>$7.99 <span>${row.PRICE}원</span></h4>
+											<h4>${row.PRICE*0.75}원<span>${row.PRICE}원</span></h4>
 										</div>
 										<div class="snipcart-details top_brand_home_details">
 										<!--	<form action="/board/insertCart.do" method="post">

@@ -62,7 +62,11 @@
 </select>
 <input size=24 name="keyword2" class="btn" placeholder="Search term..."> 
 <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
+<c:choose>
+	<c:when test="${sessionScope.user_id!=null}">
 <div align="right"><a class="btn btn-default" href="/qna/openQnaWrite.do">write</a></div>
+	</c:when>
+</c:choose>
 </form>
 </div>
 <div class="clear-fix"></div>

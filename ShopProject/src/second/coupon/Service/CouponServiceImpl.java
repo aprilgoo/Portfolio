@@ -22,4 +22,11 @@ public class CouponServiceImpl implements CouponService {
 		return couponDAO.selectCouponList(user_id);
 	}
 
+
+	@Override
+	public void updateCoupon(Map<String, Object> map, String user_id) throws Exception {
+		couponDAO.updateCoupon(map, user_id);
+		
+	}
+
 }

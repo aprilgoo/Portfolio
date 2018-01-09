@@ -1,6 +1,8 @@
  package second.join.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,10 +23,10 @@ public class JoinController {
 	private JoinService joinService;
 	
 	@RequestMapping(value="/join/insertJoinForm.do")
-	public ModelAndView insertJoinForm(CommandMap commandMap) throws Exception  {
+	public ModelAndView insertJoinForm(HttpSession session, CommandMap commandMap) throws Exception  {
 		ModelAndView mv = new ModelAndView("redirect:/index.jsp");
-		
-		joinService.insertJoinForm(commandMap.getMap());
+		String user_pwd = (String)session.getAttribute("user_password");
+		joinService.insertJoinForm(commandMap.getMap(), user_pwd);
 		return mv;		
 	}	
 

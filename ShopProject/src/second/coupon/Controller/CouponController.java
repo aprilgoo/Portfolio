@@ -28,10 +28,19 @@ public class CouponController {
 			ModelAndView mv = new ModelAndView("cart/coupon_list");
 			String user_id = (String)session.getAttribute("user_id");		   
 			List<Map<String,Object>> list2 = couponService.selectCouponList(user_id);
-			mv.addObject("list2", list2);
-			log.debug(list2);
+			mv.addObject("list2", list2);		
 			return mv;
 		}
+		
+		
+		@RequestMapping(value="/coupon/updateCoupon.do")
+		public ModelAndView updateCoupon(HttpSession session, CommandMap commandMap) throws Exception {
+			ModelAndView mv = new ModelAndView("cart/coupon_list");
+			String user_id = (String)session.getAttribute("user_id");
+			couponService.updateCoupon(commandMap.getMap(), user_id);
+			return mv;
+		}
+		
 	
 
 }

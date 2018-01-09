@@ -44,7 +44,7 @@ public class LoginController
   public String openLoginSession(HttpSession session, HttpServletResponse response, HttpServletRequest request, CommandMap commandMap)
     throws Exception
   {
-    String returnURL = "";
+    String returnURL1 = "";
     Map<String, Object> map = new HashMap<String, Object>();
     map = loginService.openLoginSession(commandMap.getMap());
         
@@ -52,17 +52,18 @@ public class LoginController
       session.removeAttribute("user");
     }
     
-    if ((request.getParameter("user_id").equals((String)map.get("user_id"))) && (request.getParameter("user_password").equals((String)map.get("user_password"))))
+    else if ((request.getParameter("user_id").equals((String)map.get("user_id"))) && (request.getParameter("user_password").equals((String)map.get("user_password"))))
     {
       
       session.setAttribute("user", map); 
-      session.setAttribute("user_id", map.get("user_id"));      
-      returnURL = "redirect:/page/user/user_page.jsp";
-      return returnURL;
+      session.setAttribute("user_id", map.get("user_id"));  
+    
+      returnURL1 = "redirect:/page/user/user_page.jsp";
+      return returnURL1;
     }
     
-    returnURL = "redirect:/page/user/user_login.jsp";
-    return returnURL;
+    returnURL1 = "redirect:/page/user/user_login.jsp";
+    return returnURL1;
   }
   
   @RequestMapping("/user/openUserUpdate.do")

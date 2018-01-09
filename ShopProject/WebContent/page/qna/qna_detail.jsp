@@ -34,29 +34,14 @@
             <tr>
                 <th scope="row">제목</th>
                 <td colspan="3">${map.TITLE}</td>
+               <input type="hidden" id="TITLE" name="TITLE" value="${map.TITLE}" />                
+                
             </tr>
             <tr>
                 <td colspan="4">${map.CONTENTS}</td>
-            </tr>
-     <!--      <tr>
-            	<th scope="row">첨부파일</th>
-            	<td colspan="3">
-            		<c:choose> 
-            		<c:when test = "${fn:length(list) > 0}">
-            			<c:forEach var="row" items="${list}">            				
-            				<input type="hidden" id="IDX" value="${row.IDX }">
-            				
-            				<a href="#this" name="file">${row.ORIGINAL_FILE_NAME }</a>
-            				(${row.FILE_SIZE }kb)
-            				<br />
-            			</c:forEach>
-            			</c:when>
-            			<c:otherwise>            			
-            				첨부 파일이 없습니다.          			           			
-            			</c:otherwise>
-            		</c:choose>
-            	</td>
-            </tr>  -->  
+               <input type="hidden" id="CONTENTS" name="CONTENTS" value="${map.CONTENTS}" />                
+                
+            </tr>    
         </tbody>
     </table>
     </div>                     
@@ -67,7 +52,7 @@
 <c:choose>
 	<c:when test="${map.USER_ID==sessionScope.user_id}">
 		<a class="btn btn-default" href="/qna/openQnaWrite.do">write</a>
-		<a href="/qna/updateQnaBoard.do?IDX=${map.IDX}" class="btn btn-default">modify</a>
+		<a href="/qna/openQnaUpdate.do?IDX=${map.IDX}" class="btn btn-default">modify</a>
         <a href="/qna/deleteQna.do?IDX=${map.IDX}" class="btn btn-default">delete</a>
 	</c:when>
 	<c:otherwise>            			

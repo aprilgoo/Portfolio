@@ -2,7 +2,7 @@
 <beans xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans">
 
 <!-- &를 참조자로 인식하기 때문에 &amp;로 바꾸어줘야 함 -->
-<!-- dataSourceSpied(log4j-remix가 쿼리를 정렬해줌 -->
+<!-- dataSourceSpied(log4j-remix가 쿼리를 정렬해줌) -->
 <bean destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource" id="dataSourceSpied">
 <property value="org.mariadb.jdbc.Driver" name="driverClassName"/>
 <property value="jdbc:mariadb://localhost:3306/mshop?useUnicode=true&amp;characterEncoding=utf8" name="url"/>

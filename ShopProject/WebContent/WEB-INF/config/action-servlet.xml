@@ -33,7 +33,12 @@
             <mvc:mapping path="/user/openUserUpdate.do"/>            
             <mvc:mapping path="/pay/openPayment.do"/>
             <mvc:mapping path="/page/user/user_delete.jsp"/>
-            <mvc:mapping path="/cart/openCartList.do"/>       
+            <mvc:mapping path="/cart/openCartList.do"/>   
+            <mvc:mapping path="/qna/openQnaWrite.do"/>  
+			<mvc:mapping path="/qna/insertQnaBoard.do"/> 
+			<mvc:mapping path="/qna/openQnaUpdate.do" /> 
+			<mvc:mapping path="/qna/updateQnaBoard.do"/> 
+ 			<mvc:mapping path="/qna/deleteQna.do"/>
             <bean id="loginInterceptor" class="second.common.login.LoginInterceptor"></bean>
         </mvc:interceptor>   
     </mvc:interceptors>
